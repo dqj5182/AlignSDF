@@ -8,9 +8,18 @@ Recent work achieved impressive progress towards joint reconstruction of hands a
 
 ## Installation
 ```setup
-conda create --name alignsdf python=3.9
+conda create -n alignsdf python=3.8
 conda activate alignsdf
-conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+conda install -c conda-forge ninja
+conda install -c conda-forge cxx-compiler=1.3.0
+
+conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=11.3 -c pytorch
+pip install torch==1.12.0+cu113 torchvision==0.13.0+cu113 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu113
+
+conda install -y -c conda-forge cudatoolkit-dev
+conda install -c fvcore -c iopath -c conda-forge fvcore iopath
+pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable"
+
 pip install -r requirements.txt
 ```
 
