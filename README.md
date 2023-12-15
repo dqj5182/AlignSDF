@@ -20,6 +20,8 @@ conda install -y -c conda-forge cudatoolkit-dev
 conda install -c fvcore -c iopath -c conda-forge fvcore iopath
 pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable"
 
+conda install -c conda-forge tensorboard
+
 pip install -r requirements.txt
 ```
 

@@ -5,6 +5,5 @@ plyfile
 scikit-image
 scikit-learn
 chumpy
-tensorboard
 lmdb
 fire
