@@ -2,7 +2,7 @@ opencv-python
 numpy
 trimesh
 plyfile
-scikit-image
+scikit-image==0.18.3
 scikit-learn
 chumpy
 lmdb
