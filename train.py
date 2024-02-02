@@ -18,7 +18,7 @@ from torch.utils.tensorboard import SummaryWriter
 from torch import distributed as dist
 import torch.nn.functional as F
 
-from torch.nn.parallel import DistributedDataParallel as NativeDDP
+#from torch.nn.parallel import DistributedDataParallel as NativeDDP
 import utils
 import networks.model as arch
 import networks.manobranch as mano
@@ -395,7 +395,7 @@ def main_function(specs, continue_from, local_rank, opt_level, use_slurm):
     criterion_ce = torch.nn.CrossEntropyLoss(ignore_index=-1)
     optimizer_all = torch.optim.Adam([{"params": encoderDecoder.parameters()}])
 
-    encoderDecoder = NativeDDP(encoderDecoder, device_ids=[local_rank], find_unused_parameters=True, output_device=local_rank)
+    #encoderDecoder = NativeDDP(encoderDecoder, device_ids=[local_rank], find_unused_parameters=True, output_device=local_rank)
 
     # Tensorboard summary
     if local_rank == 0:

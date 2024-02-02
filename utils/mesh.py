@@ -4,6 +4,7 @@ from distutils.log import debug
 import logging
 import numpy as np
 import trimesh
+import skimage
 import skimage.measure
 import time
 import torch
@@ -350,12 +351,12 @@ def convert_sdf_samples_to_ply(
 
     numpy_3d_sdf_tensor = pytorch_3d_sdf_tensor.numpy()
 
-    try:
-        verts, faces, normals, values = skimage.measure.marching_cubes_lewiner(numpy_3d_sdf_tensor, level=0.0, spacing=[voxel_size] * 3)
-    except Exception as e:
-        logging.warning("Cannot reconstruct mesh from '{}'".format(ply_filename_out))
-        print(e)
-        return None, None, np.array([0,0,0]), np.array([1])
+    # try:
+    verts, faces, normals, values = skimage.measure.marching_cubes_lewiner(numpy_3d_sdf_tensor, level=0.0, spacing=[voxel_size] * 3)
+    # except Exception as e:
+    #     logging.warning("Cannot reconstruct mesh from '{}'".format(ply_filename_out))
+    #     print(e)
+    #     return None, None, np.array([0,0,0]), np.array([1])
 
     mesh_points = np.zeros_like(verts)
     mesh_points[:, 0] = voxel_grid_origin[0] + verts[:, 0]

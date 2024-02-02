@@ -44,6 +44,9 @@ def get_model(model_directory, specs, device):
     saved_model_epoch = saved_model_state["epoch"]
     print("using model from epoch {}".format(saved_model_epoch))
 
+    for key in list(saved_model_state["model_state_dict"].keys()):
+        saved_model_state["model_state_dict"]['module.' + key] = saved_model_state["model_state_dict"].pop(key)
+
     encoderDecoder.load_state_dict(saved_model_state["model_state_dict"])
 
     encoderDecoder = encoderDecoder.to(device)
